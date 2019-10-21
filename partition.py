@@ -632,9 +632,9 @@ if __name__ == '__main__':
     import os
     import argparse
 
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('drives', metavar='image', type=str, nargs='+',
-                        help='an integer for the accumulator')
+    parser = argparse.ArgumentParser(description='Util to read MBR, GPT or BSD DiskTable tables')
+    parser.add_argument('drives', metavar='drives', type=str, nargs='+',
+                        help='Drives (or images) to read partitions')
     parser.add_argument('-l', '--log', action='store_true', default=False,
                         help='Save output in to partition.log of working directory')
 
@@ -644,9 +644,9 @@ if __name__ == '__main__':
         print = logger(os.path.abspath(os.path.join(os.path.curdir, 'partition.log')))
 
     for drive_path in args.drives:
-        if not os.path.exists(drive_path):
-            print('Error, can\'t find image', drive_path)
-            exit(0)
+        if not os.path.exists(drive_path) or os.path.isdir(drive_path):
+            print('Error, can\'t find image file', drive_path)
+            exit(-1)
         try:
             fp = open(os.path.abspath(drive_path), 'rb')
         except IOError:
