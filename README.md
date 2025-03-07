@@ -39,8 +39,6 @@ Or, for Python 2.7:
 $ python2.7 partition.py image1 image2 ...
 ```
 
-Use `-l` or `--log` to save the output to `partition.log` in the working directory.
-
 <details>
   <summary>Example usage</summary>
 
@@ -55,7 +53,6 @@ positional arguments:
 
 options:
   -h, --help  show this help message and exit
-  -l, --log   Save output in to partition.log of working directory
 
 ----------------------------------------------------------------------------
 
@@ -64,25 +61,27 @@ $ python partition.py ./examples/disk.img
 ##### IMAGE disk.img #####
 MBR Header
 ----------------------------------------------------------------------------------------
-File dump        | #Parts | FS or potential FS     |  Start   |   Size     |  Note      |
-                 |        |                        |          |           | *-active   |
+File dump       | #Parts   | FS or potential FS   |  Start   |   Size     |   Note     |
+                |          |                      |          |            | *-active   |
 ----------------------------------------------------------------------------------------
- disk.img        | Serial: 0x00000000
+disk.img        | Serial: 0x00000000                                                   |
 ----------------------------------------------------------------------------------------
-                 |    1   | EFI GPT protec MBR     |    1     |   20479    | ID=0xEE    |
+                |    1    |  EFI GPT protec MBR   |    1     |   20479    |   ID=0xEE  |
 ----------------------------------------------------------------------------------------
 ---
 GPT Header
 -----------------------------------------------------------------------------------------------------------------------------------------
-File dump        | #Parts |         Partition GUID             |  Start   |   Size     |   FS or potential FS        |   Note   |
+File dump       | #Parts   |           Partition GUID            |  Start   |    Size    |        FS or potential FS        |   Note    |
 -----------------------------------------------------------------------------------------------------------------------------------------
- disk.img        | GUID: 0xA924656E-9A06-4F9E-82E2-CFEC246890F6
+ disk.img       | GUID: 0xA924656E-9A06-4F9E-82E2-CFEC246890F6                                                                          |
 -----------------------------------------------------------------------------------------------------------------------------------------
-                 |    1   | 0FC63DAF-8483-4772-8E79-3D69D8477DE4 |   2048   |   18398    | Linux filesystem data       |   0      |
-                 |        | 943FC24C-950E-4E13-8D60-503407C8159E |          |           |                             |          |
+                |    1    | 0FC63DAF-8483-4772-8E79-3D69D8477DE4 |   2048   |   18398    | Linux filesystem data           |     0      |
+                |         | 943FC24C-950E-4E13-8D60-503407C8159E |          |            |                                 |            |
 -----------------------------------------------------------------------------------------------------------------------------------------
 ---
 No Disklabel
 ---
+
 ```
+
 </details>
